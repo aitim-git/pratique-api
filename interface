@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interface Produit</title>
+  <style>
+    /* --- Styles généraux --- */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f6fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+      margin: 0;
+      padding-top: 40px;
+    }
+
+    h1 {
+      color: #2f3640;
+      margin-bottom: 30px;
+    }
+
+    /* --- Carte produit --- */
+    .product-card {
+      background: #fff;
+      width: 280px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .product-content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .product-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #2f3640;
+    }
+
+    .product-description {
+      font-size: 0.9rem;
+      color: #718093;
+      margin: 10px 0;
+    }
+
+    .product-price {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #44bd32;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      background: #273c75;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #40739e;
+    }
+
+    /* --- Panier --- */
+    .cart {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      background: #fff;
+      padding: 10px 15px;
+      border-radius: 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cart-icon {
+      font-size: 20px;
+    }
+
+    .cart-count {
+      background: #e84118;
+      color: #fff;
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="cart">
+    🛒 <span>Panier</span>
+    <div class="cart-count" id="cartCount">0</div>
+  </div>
+
+  <h1>Boutique de Produits</h1>
+
+  <div class="product-card">
+    <div class="product-image">
+      <img src="https://images.unsplash.com/photo-1606813902794-54444a9d2839?w=800" alt="Produit">
+    </div>
+    <div class="product-content">
+      <div class="product-title">Casque Audio Bluetooth</div>
+      <div class="product-description">
+        Casque sans fil avec réduction de bruit active et autonomie de 20h.
+      </div>
+      <div class="product-price">89.99 €</div>
+      <button class="btn" id="addToCart">Ajouter au panier</button>
+    </div>
+  </div>
+
+  <script>
+    const addToCartBtn = document.getElementById('addToCart');
+    const cartCount = document.getElementById('cartCount');
+    let count = 0;
+
+    addToCartBtn.addEventListener('click', () => {
+      count++;
+      cartCount.textContent = count;
+      addToCartBtn.textContent = "Ajouté ✅";
+      setTimeout(() => addToCartBtn.textContent = "Ajouter au panier", 1500);
+    });
+  </script>
+</body>
+</html>
